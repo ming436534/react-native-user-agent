@@ -147,6 +147,11 @@ RCT_EXPORT_MODULE(RNUserAgent);
     return [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
 }
 
+RCT_EXPORT_METHOD(setUserAgent:(NSString *) userAgent) {
+    NSDictionary *dictionary = [[NSDictionary alloc] initWithObjectsAndKeys:userAgent, @"UserAgent", nil];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:dictionary];
+}
+
 
 - (NSDictionary *)constantsToExport
 {

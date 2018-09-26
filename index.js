@@ -1,5 +1,5 @@
 
-import { NativeModules } from 'react-native';
+import { NativeModules, Platform } from 'react-native';
 
 const { RNUserAgent } = NativeModules;
 
@@ -11,5 +11,10 @@ module.exports = {
   getWebViewUserAgent() {
     return RNUserAgent.webViewUserAgent;
   },
+  setUserAgent(userAgent) {
+    if (Platform.OS === 'ios') {
+      RNUserAgent.setUserAgent(userAgent);
+    }
+  }
 };
 
